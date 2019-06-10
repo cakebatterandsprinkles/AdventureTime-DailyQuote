@@ -1,0 +1,52 @@
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    min-height: 100vh;
+}
+
+.character-box {
+    flex-grow: 1;
+    padding: 2em;
+    text-align: center;
+}
+
+#finn {
+    background: #42A5F5;
+}
+
+#jake {
+    background: #FFEE58;
+}
+
+.quote {
+    color: white;
+    padding: 1em 2em;
+    text-align: justify;
+    background-color: rgba(50, 50,50,0.4);
+    overflow: auto;
+}
+
+.quote:empty {
+    display: none;
+}
+
+.quote::first-letter {
+    font-size: 50px;
+    padding: 0 4px 0 0;
+    line-height: 35px;
+    float:left;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+}
+
+@media(max-width: 600px) {
+    #wrapper {
+        flex-direction: column;
+    }
+}
