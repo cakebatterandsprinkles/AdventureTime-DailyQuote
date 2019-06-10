@@ -1,33 +1,31 @@
 $("#jake-image").on("click", function(){
     let jakeQuoteUrl = "https://adventure-time-quote-api.glitch.me/api/jake";
     let jakeGifUrl = "http://api.giphy.com/v1/gifs/random?tag=adventure+time+jake&api_key=wSCP998sGk4ILdpbjPhlS0EMr9227bNx";
-    $.get(jakeGifUrl).then (function(){
-        this.empty();
-        let jakeGif = $("<img>").attr("src", jakeGifUrl);
-        this.append(jakeGif);
+    let element = $(this);
+    $.get(jakeGifUrl).then (function(data){
+        element.attr("src", data.data.image_original_url);
     });
     $.get (jakeQuoteUrl).then (function(data){
-        console.log(data);
         $("#jake-quote").empty();
-        let jakeQuote = $("<p>").text(data);
+        let randomNumber = Math.floor(Math.random()*20);
+        let jakeQuote = $("<p>").text(data[0].quotes[randomNumber]);
         $("#jake-quote").append(jakeQuote);
     });
 });
 
-$("#finn-image").on("click", function(data){
+$("#finn-image").on("click", function(){
     let finnQuoteUrl = "https://adventure-time-quote-api.glitch.me/api/finn";
     let finnGifUrl = "http://api.giphy.com/v1/gifs/random?tag=adventure+time+finn&api_key=wSCP998sGk4ILdpbjPhlS0EMr9227bNx";
-    $.get(finnGifUrl).then (function(){
-        this.empty();
-        let finnGif = $("<img>").attr("src", finnGifUrl);
-        this.append(finnGif);
+    let element = $(this);
+    $.get(finnGifUrl).then (function(data){
+        element.attr("src", data.data.image_original_url);
     });
     $.get (finnQuoteUrl).then (function(data){
         console.log(data);
-        $("#jake-quote").empty();
-        let randomNumber = Math.floor(Math.Random()*10);
-        let finnQuote = $("<p>").text(data.quotes[randomNumber]);
-        $("#jake-quote").append(finnQuote);
+        $("#finn-quote").empty();
+        let randomNumber = Math.floor(Math.random()*10);
+        let finnQuote = $("<p>").text(data[0].quotes[randomNumber]);
+        $("#finn-quote").append(finnQuote);
     });
 });
 
